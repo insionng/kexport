@@ -230,7 +230,7 @@ var Exports = map[string]interface{}{
 	if keys, _ := p.FilterCommon(Func); len(keys) > 0 {
 		outf("\n")
 		for _, v := range keys {
-			name := toLowerCaseStyle(v)
+			name := toLowerCaseStyle(v, false)
 			fn := pkgName + "." + v
 			if vers, ok := checkVer(v); ok {
 				outfv(vers, name, fn)
@@ -267,9 +267,9 @@ var Exports = map[string]interface{}{
 			}
 
 			for _, f := range funcsNew {
-				name := toLowerCaseStyle(f)
+				name := toLowerCaseStyle(f, false)
 				if flagRenameNewTypeFunc && len(funcsNew) == 1 {
-					name = toLowerCaseStyle(v)
+					name = toLowerCaseStyle(v, false)
 					if ast.IsExported(name) {
 						name = strings.ToLower(name)
 						log.Printf("waring convert %s to %s", bp.ImportPath+"."+f, name)
@@ -284,7 +284,7 @@ var Exports = map[string]interface{}{
 			}
 
 			for _, f := range funcsOther {
-				name := toLowerCaseStyle(f)
+				name := toLowerCaseStyle(f, false)
 				fn := pkgName + "." + f
 				if vers, ok := checkVer(f); ok {
 					outfv(vers, name, fn)
@@ -350,9 +350,9 @@ var Exports = map[string]interface{}{
 			}
 
 			for _, f := range funcsNew {
-				name := toLowerCaseStyle(f)
+				name := toLowerCaseStyle(f, false)
 				if flagRenameNewTypeFunc && len(funcsNew) == 1 {
-					name = toLowerCaseStyle(v)
+					name = toLowerCaseStyle(v, false)
 					//NewRGBA => rgba
 					if ast.IsExported(name) {
 						name = strings.ToLower(name)
@@ -368,7 +368,7 @@ var Exports = map[string]interface{}{
 			}
 
 			for _, f := range funcsOther {
-				name := toLowerCaseStyle(f)
+				name := toLowerCaseStyle(f, false)
 				fn := pkgName + "." + f
 				if vers, ok := checkVer(f); ok {
 					outfv(vers, name, fn)
