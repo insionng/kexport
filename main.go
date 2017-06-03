@@ -27,7 +27,7 @@ var (
 const help = `Export go packages to qlang modules.
 
 Usage:
-  kexport [-contexts=""] [-defctx=false] [-convnew=true] [-skiperrimpl=true] [-outpath="./qlang"] packages
+  kexport [-contexts=""] [-defctx=false] [-convnew=true] [-skiperrimpl=true] [-outpath="./module"] packages
 
 The packages for go package list or std for golang all standard packages.
 `
@@ -42,7 +42,7 @@ func init() {
 	flag.BoolVar(&flagDefaultContext, "defctx", false, "optional use default context for build, default use all contexts.")
 	flag.BoolVar(&flagRenameNewTypeFunc, "convnew", false, "optional convert NewType func to type func")
 	flag.BoolVar(&flagSkipErrorImplementStruct, "skiperrimpl", false, "optional skip error interface implement struct.")
-	flag.StringVar(&flagExportPath, "outpath", "./qlang", "optional set export root path")
+	flag.StringVar(&flagExportPath, "outpath", "./module", "optional set export root path")
 }
 
 var (
